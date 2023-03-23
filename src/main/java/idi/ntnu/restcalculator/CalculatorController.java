@@ -1,18 +1,28 @@
 package idi.ntnu.restcalculator;
 
 import idi.ntnu.restcalculator.model.CalculationResult;
+import idi.ntnu.restcalculator.model.Expression;
+import idi.ntnu.restcalculator.model.User;
+import idi.ntnu.restcalculator.repository.ExpressionRepository;
+import idi.ntnu.restcalculator.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Map;
 
 
 @RestController
 public class CalculatorController {
     private static final Logger logger = LoggerFactory.getLogger(CalculatorController.class);
+
+    @Autowired
+    ExpressionRepository expressionRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @CrossOrigin(origins = "http://localhost:8081/")
     @PostMapping("/calculate")
@@ -31,6 +41,18 @@ public class CalculatorController {
         }
         return result;
     }
+
+    @GetMapping(path = "/expressions")
+    public List<Expression> getAllExpressions() {
+        return expressionRepository.findAll();
+    }
+
+    @GetMapping(path = "/users")
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+
 
 
 }
