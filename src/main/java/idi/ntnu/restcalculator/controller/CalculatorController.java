@@ -1,10 +1,11 @@
-package idi.ntnu.restcalculator;
+package idi.ntnu.restcalculator.controller;
 
 import idi.ntnu.restcalculator.model.CalculationResult;
 import idi.ntnu.restcalculator.model.Expression;
 import idi.ntnu.restcalculator.model.User;
 import idi.ntnu.restcalculator.repository.ExpressionRepository;
 import idi.ntnu.restcalculator.repository.UserRepository;
+import idi.ntnu.restcalculator.service.CalculatorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package idi.ntnu.restcalculator;
+package idi.ntnu.restcalculator.service;
 
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class CalculatorService {
     public CalculatorService() {
     }
 
-    static double evaluate(String expression) {
+    public static double evaluate(String expression) {
         try {
             Object result = engine.eval(expression);
             if (result instanceof Number) {
